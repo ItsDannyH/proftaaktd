@@ -34,7 +34,7 @@ db_connect();
             <h1>Blogs</h1>
             <?php 
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                echo '<a href="createBlogPost.php"><h2>Create Post</h2></a>';
+                echo '<a href="createBlogPost.php"><h2 class="Clickable">Create Post</h2></a>';
             } 
             else 
             {

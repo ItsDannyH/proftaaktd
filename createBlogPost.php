@@ -17,7 +17,7 @@ createPost();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameWorld</title>
+    <title>TD</title>
     <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
@@ -54,7 +54,7 @@ createPost();
             
             <label for="content">Post:</label><br>
             <!-- Text area for entering post content -->
-            <textarea id="content" name="content" rows="4" required></textarea><br>
+            <textarea id="content" name="content" rows="20" cols="100" required></textarea><br>
             
             <!-- Submit button -->
             <input type="submit" value="Submit">

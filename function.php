@@ -328,7 +328,7 @@ foreach ($blogItems as $bItem)
                 <p class="date"><?php echo $bItem['date']; ?></p>
                 <p class="categoryb"><?php echo $bItem['category']; ?></p>
                 <p class="content"><?php echo substr($bItem['content'], 0, 100) . '...'; ?></p>
-                <a href="blog.php?id=<?php echo $bItem['id']; ?>">Read more</a>
+                <a class="Clickable" href="blog.php?id=<?php echo $bItem['id']; ?>">Read more</a>
         </div>
         <?php
     } 
@@ -372,13 +372,15 @@ function showBlog($blogId) {
     // Check if the blog post exists
     if ($blogPost) {
         ?>
-        <a href="blog.php"><h1>Go Back</h1></a>
-        <div class="blog-item">
-            <h1 class="titleb"><?php echo $blogPost['title']; ?></h1>
-            <p class="author"><?php echo $blogPost['author']; ?></p>
-            <p class="date"><?php echo $blogPost['date']; ?></p>
-            <p class="categoryb"><?php echo $blogPost['category']; ?></p>
-            <p class="content"><?php echo $blogPost['content']; ?></p>
+        <a href="blog.php" class="block Clickable"><h1>Go Back</h1></a>
+        <div class="Content">
+            <div class="blog-item">
+                <h1 class="titleb"><?php echo $blogPost['title']; ?></h1>
+                <p class="author"><?php echo $blogPost['author']; ?></p>
+                <p class="date"><?php echo $blogPost['date']; ?></p>
+                <p class="categoryb"><?php echo $blogPost['category']; ?></p>
+                <p class="content"><?php echo $blogPost['content']; ?></p>
+            </div>
         </div>
   
         <!-- Comment Section -->
@@ -406,14 +408,16 @@ function showBlog($blogId) {
                 }
             ?>
             <!-- Comment Form -->
+            <div class="addcomment">
             <form action="addComment.php" method="post">
                 <input type="hidden" name="blog_id" value="<?php echo $blogId; ?>">
                 <label for="author">Name:</label><br>
                 <input type="text" id="author" name="name" value="<?php echo isset($_SESSION['user']) ? $_SESSION['user']['username'] : ''; ?>" required readonly><br>
                 <label for="content">Comment:</label><br>
-                <textarea id="content" name="comment" rows="4" required></textarea><br>
+                <textarea id="content" name="comment" rows="10" cols="50" required></textarea><br>
                 <input type="submit" value="Post Comment">
             </form>
+            </div>
         </div>
         <?php
     } 

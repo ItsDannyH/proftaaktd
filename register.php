@@ -17,7 +17,7 @@ register();
         </nav>
     </header>
     <main>
-        <div class="login-container">
+        <div class="container">
             <h2>Register</h2>
             <form action="register.php" method="post">
                 <label for="usernameR">Username:</label><br>

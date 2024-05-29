@@ -85,48 +85,49 @@ nav a
 
 .Content
 {
-  height: 100%;
+  height: auto;
   width: 100%;
   margin: auto;
   margin-top: 4vw;
   text-align: center; 
   border-radius: 8px;
-  padding: 1vw;
 }
 
+.Content a
+{
+  color: #008cff;
+}
+
+.content
+{
+  margin-bottom: 2vw;
+}
+
+
+
+.BlogContent
+{
+  align-self: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 3vw;
+}
 .BlogContentCreate
 {
   margin: auto;
   margin-top: 4vw;
-  background-color: #F6E58E;
+  background-color: #bcbcbc;
   text-align: center;
+  width: fit-content;
   border-radius: 8px;
-  padding: 1vw;
+  padding: 2vw;
 }
-
-  .BlogContent
-  {
-    align-self: center;
-    width: 60%;
-    margin: auto;
-    margin-top: 3vw;
-  }
-  .BlogContent h1
-  {
-    margin-bottom: 1vw;
-  }
-  .BlogContent a
-  {
-    font-style: italic;
-    text-decoration: underline;
-    color: rgb(0, 0, 120);
-  }
 
   .blog-item 
   { 
     width: 100%;
     height: fit-content;
-    background-color: #F6E58E;
+    background-color: #bcbcbc;
     text-wrap: wrap;
     text-align: center;
     margin-bottom: 2vw;
@@ -134,15 +135,39 @@ nav a
     border-radius: 8px;
   }
 
-  .comment
+  .comment-section
   {
-    width: 100%;
+    width: fit-content;
     height: fit-content;
-    background-color: #F6E58E;
+    background-color: #bcbcbc;
     text-wrap: wrap;
     text-align: center;
+    margin: auto;
+    margin-top: 2vw;
     margin-bottom: 2vw;
     padding: 2vw;
+    border-radius: 8px;
+  }
+
+  .comment
+  {
+    width: auto;
+    height: fit-content;
+    background-color: #008cff;
+    text-wrap: wrap;
+    text-align: center;
+    margin: auto;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    padding: 2vw;
+    border-radius: 8px;
+  }
+
+  .addcomment
+  {
+    margin: auto;
+    background-color: #008cff;
+    padding: 1vw;
     border-radius: 8px;
   }
 
@@ -184,7 +209,7 @@ nav a
     position: absolute;
     top: 7%;
     margin-left:1vw;
-    background-color: #D4C680;
+    background-color: #008cff;
     padding: 0.5%;
     border-radius: 6px;
     border: none;
@@ -265,4 +290,13 @@ nav a
     {
       background-color: #008cff;
       margin-top: 1vw;
+      width: fit-content;
+      height: fit-content;
+      padding: 1vw;
+      border-radius: 8px;
+    }
+
+    .block
+    {
+      display: block;
     }
