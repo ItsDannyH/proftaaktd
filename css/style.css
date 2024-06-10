@@ -6,6 +6,7 @@
 }
 
 body, html {
+    min-width: 100vh;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -32,15 +33,16 @@ body, html {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    backdrop-filter: blur(20px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 }
 
 /* Other styles for your content */
-h1 {
+.aaa {
     text-align: center;
-    color: #000000;
+    color: #ffffff;
 }
 
 .contact-info, .contact-form, .social-media {
@@ -48,11 +50,21 @@ h1 {
 }
 
 .contact-info h2, .contact-form h2, .social-media h2 {
-    color: #000000;
+    color: #ffffff;
 }
 
 .contact-info p, .social-media a {
-    color: #000000;
+    color: #ffffff;
+}
+
+.contact-info a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    color: #ffffff;
+    text-decoration: underline;
 }
 
 .contact-form form {
@@ -62,7 +74,7 @@ h1 {
 
 .contact-form label {
     margin-bottom: 5px;
-    color: #000000;
+    color: #ffffff;
 }
 
 .contact-form input, .contact-form textarea {
@@ -96,66 +108,69 @@ h1 {
     color: #0056b3;
 }
 
-/* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #33333300;
+.social-media p {
+    color: #ffffff;
+}
+
+.header {
     position: fixed;
     top: 0;
-    width: 100%;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover:not(.active) {
-    background-color: #111;
-  } */
-
-  nav{
-    display: flex;
-    width: 524px;
-    height: 50px;
-    background: #000000;
-    border-radius: 8px;
-    display: flex;
-    justify-items: center;
-  }
-
-  nav a {
-    position: relative;
-    display: inline-block;
-    font-size: 1em;
-    font-weight: 500;
-    color: #fff;
-    text-decoration: none;
-    padding: 0 23;
-  }
-  nav span{
-    position: absolute;
-    top: 0;
     left: 0;
-    width: 95px;
-    height: 100%;
-    background: linear-gradient(45deg, #0056b3, #d21f1f51);
-  }
+    width: 100%;
+    padding: 20px 100px;
+    background: transparent;
+    justify-content: space-between;
+    z-index: 99;
+}
 
-  .tower {
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.loginbtn {
+    width: 100px;
+    height: 3dvh;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+.loginbtn:hover {
+    background: #fff;
+    color: black;
+} 
+
+.tower {
     display: flex; 
     align-items: center;
     justify-content: space-around; 
-}
+} 
 
 .box {
     border: 3px solid rgba(0, 0, 0, 0.288); 
@@ -235,4 +250,23 @@ h1 {
 .team-fetail p{
     color: #fff;
     font-size: 18px; 
+}
+
+.loginbtn{
+    width: 100px;
+    height: 3dvh;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+.loginbtn:hover{
+    background: #fff;
+    color: black;
 }

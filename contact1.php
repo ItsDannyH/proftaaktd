@@ -8,21 +8,22 @@
 </head>
 <body>
 
-<nav>
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">info</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li style="float:right"><a href="#about">Login/Sighn up</a></li>
-</ul>
-</nav>
+<header class="header">
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">contact</a>
+        <a href="#">info</a>
+        <a href="#">team</a>
+        <a style="float:right" href="#about">Login/Sighn up</a>
+    </nav>
+</header>
 
 <video autoplay muted loop class="video-background">
         <source src="back\mylivewallpapers-com-Black-Hole-FHD.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <div class="container">
-        <h1>Contact Us</h1>
+        <h1 class="aaa">Contact Us</h1>
 
         <div class="contact-info">
             <h2>Contact Information</h2>

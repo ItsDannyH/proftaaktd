@@ -3,48 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/info.css">
     <title>Document</title>
 </head>
 <body>
-<nav>
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">info</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li style="float:right"><a href="#about">Login/Sighn up</a></li>
-</ul>
-</nav>
+
+<!-- <header class="header">
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">contact</a>
+        <a href="#">info</a>
+        <a href="#">team</a>
+        <a style="float:right" href="#about">Login/Sighn up</a>
+    </nav>
+</header>
 
 <video autoplay muted loop class="video-background">
     <source src="back\mylivewallpapers-com-Black-Hole-FHD.mp4" type="video/mp4">
     Your browser does not support the video tag.
-</video>
+</video> -->
 
-<div class="tower">
-    <div class="box photo-box">
-        <img src="back\towerdefensesuddenattack.webp" alt="Old Tower Defence">
+<div class="container-info">
+    <div class="cardsi">
+        <img src="back\towerdefensesuddenattack.webp" alt="TD">
+        <div class="intro">
+            <h1>Tower Defence</h1>
+            <p><span>Tower defense</span>(TD) games are strategy games where players defend territories by building defensive structures to block enemy attackers. These games focus on strategic planning, resource management,
+                and tactical decisions. Originating from custom maps in RTS games like StarCraft</p>
+        </div>
     </div>
-    <div class="box text-box">
-        <h2>History TD</h2>
-        <p>Tower defense (TD) games are a popular sub-genre of strategy games where players must defend their territories or possessions by 
-            obstructing enemy attackers, usually by building a variety of defensive structures. This genre emphasizes strategic planning, resource 
-            management, and tactical decision-making. Let’s delve into the various aspects of tower defense games, 
-            exploring their history, mechanics, evolution, and notable examples.</p>
+    <div class="cardsi">
+        <img src="back\towerdefensesuddenattack.webp" alt="TD">
+        <div class="intro">
+            <h1>Tower Defence</h1>
+            <p><span>Tower defense</span>(TD) games are strategy games where players defend territories by building defensive structures to block enemy attackers. These games focus on strategic planning, resource management,
+                and tactical decisions. Originating from custom maps in RTS games like StarCraft</p>
+        </div>
+    </div>
+    <div class="cardsi">
+        <img src="back\towerdefensesuddenattack.webp" alt="TD">
+        <div class="intro">
+            <h1>Tower Defence</h1>
+            <p><span>Tower defense</span>(TD) games are strategy games where players defend territories by building defensive structures to block enemy attackers. These games focus on strategic planning, resource management,
+                and tactical decisions. Originating from custom maps in RTS games like StarCraft</p>
+        </div>
     </div>
 </div>
 
-<div class="tower">
-    <div class="box photo-box">
-        <img src="back\towerdefensesuddenattack.webp" alt="Old Tower Defence">
-    </div>
-    <div class="box2">
-        <h2>History TD</h2>
-        <p>Tower defense (TD) games are a popular sub-genre of strategy games where players must defend their territories or possessions by 
-            obstructing enemy attackers, usually by building a variety of defensive structures. This genre emphasizes strategic planning, resource 
-            management, and tactical decision-making. Let’s delve into the various aspects of tower defense games, 
-            exploring their history, mechanics, evolution, and notable examples.</p>
-    </div>
-</div>
 </body>
 </html>
