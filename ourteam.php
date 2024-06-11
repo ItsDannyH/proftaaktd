@@ -37,6 +37,7 @@
                 <h3>Danny</h3>
                 <p>Leader</p>
             </div>
+            <div class="popup">Danny is the leader of our team.</div>
         </div>
         <div class="team-card">
             <div class="team-image">
@@ -46,6 +47,7 @@
                 <h3>Lucas</h3>
                 <p>Game Developer</p>
             </div>
+            <div class="popup">Lucas develops games for our project.</div>
         </div>
         <div class="team-card">
             <div class="team-image">
@@ -53,21 +55,23 @@
             </div>
             <div class="team-details">
                 <h3>Aaron</h3>
-                <p>software developer</p>
+                <p>Software Developer</p>
             </div>
+            <div class="popup">Aaron is a software developer.</div>
         </div>
         <div class="team-card">
             <div class="team-image">
-                <img src="back\IMG20240528091014.jpg" alt="stan">
+                <img src="back\IMG20240528091014.jpg" alt="Stan">
             </div>
             <div class="team-details">
                 <h3>Stan</h3>
                 <p>Designer</p>
             </div>
+            <div class="popup">Stan designs our interfaces.</div>
         </div>
     </div>
 </section>
-</div>
+
 
 </body>
 </html>
