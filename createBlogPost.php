@@ -18,9 +18,15 @@ createPost();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TD</title>
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+    <!-- Video Background -->
+    <video autoplay muted loop class="video-background">
+        <source src="back/mylivewallpapers-com-Black-Hole-FHD.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <!-- Navigation Section -->
     <nav class="nav">
         <?php

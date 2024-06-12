@@ -1,20 +1,22 @@
+<?php 
+include "function.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <title>Gameworld</title>
+    <link rel="stylesheet" href="style/style.css">
+    </head>
 <body>
-
+    
 <header class="header">
     <nav class="navbar">
-        <a href="#">Home</a>
-        <a href="#">contact</a>
-        <a href="#">info</a>
-        <a href="#">team</a>
-        <a style="float:right" href="#about">Login/Sighn up</a>
+        <?php
+        shownav();
+        ?>
+        <a style="float:right" href="login1.php" class="loginbtn">Login</a>
     </nav>
 </header>
 
@@ -23,9 +25,9 @@
         Your browser does not support the video tag.
     </video>
     <div class="container">
-        <h1 class="aaa">Contact Us</h1>
-
+        
         <div class="contact-info">
+            <h1>Contact Us</h1>
             <h2>Contact Information</h2>
             <p><strong>Email:</strong></p>
             <p>General Inquiries: <a href="mailto:info@ah_ink.com">info@yourwebsite.com</a></p>

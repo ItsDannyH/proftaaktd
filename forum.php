@@ -1,7 +1,5 @@
 <?php
-session_start();
-include("function.php");
-db_connect();
+include "function.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,15 +7,24 @@ db_connect();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameWorld</title>
-    <link rel="stylesheet" href="style/index.css">
-</head>
+    <title>Gameworld</title>
+    <link rel="stylesheet" href="style/style.css">
+    </head>
 <body>
-    <header>
-        <nav>
-            <?php shownav(); ?>
-        </nav>
-    </header>
+    
+<header class="header">
+    <nav class="navbar">
+        <?php
+        shownav();
+        ?>
+        <a style="float:right" href="login1.php" class="loginbtn">Login</a>
+    </nav>
+</header>
+
+<video autoplay muted loop class="video-background">
+    <source src="back\mylivewallpapers-com-Black-Hole-FHD.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
 
     <aside>
         <select class="category" name="category" id="category" onchange="filterBlog()">
@@ -30,7 +37,8 @@ db_connect();
     </aside>
 
     <main>    
-        <section class="BlogContent">    
+        <section class="BlogContent">   
+            <div class="blog-item"> 
             <h1>Blogs</h1>
             <?php 
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -51,11 +59,13 @@ db_connect();
                 showBlogs(); 
             }
             ?>
+            </div>
         </section>
     </main>
 
     <footer>
         <script src="js/main.js"></script>
+        <script src="script.js"></script>
     </footer>
 </body>
 </html>

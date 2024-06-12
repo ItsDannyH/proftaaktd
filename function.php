@@ -102,7 +102,7 @@ function login()
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user'] = $user;
                 // Redirect user to products page
-                header("Location:login.php");
+                header("Location:login1.php");
                 exit;
             } 
             else 
@@ -121,7 +121,7 @@ function login()
         {
             $_SESSION['loggedin'] = false;
         }
-
+        $_SESSION['loggedin'] = false;
     }
 }
 
@@ -160,7 +160,7 @@ function register()
                 if ($stmt->execute()) 
                 {
                     // Registration successful, redirect to login page
-                    header("Location:login.php");
+                    header("Location:login1.php");
                     exit;
                 } 
                 else 
@@ -372,7 +372,7 @@ function showBlog($blogId) {
     // Check if the blog post exists
     if ($blogPost) {
         ?>
-        <a href="blog.php" class="block Clickable"><h1>Go Back</h1></a>
+        <a href="blog.php" class="block Clickable">Go Back</a>
         <div class="Content">
             <div class="blog-item">
                 <h1 class="titleb"><?php echo $blogPost['title']; ?></h1>
