@@ -16,8 +16,8 @@ include "function.php";
     <nav class="navbar">
         <?php
         shownav();
+        userLoggedIn();
         ?>
-        <a style="float:right" href="login1.php" class="loginbtn">Login</a>
     </nav>
 </header>
 
@@ -29,17 +29,17 @@ include "function.php";
     <aside>
         <select class="category" name="category" id="category" onchange="filterBlog()">
             <option>Select...</option>
-            <option value="blog.php?category=game-review">Game Review</option>
-            <option value="blog.php?category=console-review">Console Review</option>
-            <option value="blog.php?category=product-review">Product Review</option>
-            <option value="blog.php">Show all</option>
+            <option value="forum.php?category=game-review">Game Review</option>
+            <option value="forum.php?category=console-review">Console Review</option>
+            <option value="forum.php?category=product-review">Product Review</option>
+            <option value="forum.php">Show all</option>
         </select>
     </aside>
 
     <main>    
         <section class="BlogContent">   
             <div class="blog-item"> 
-            <h1>Blogs</h1>
+            <h1>forums</h1>
             <?php 
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 echo '<a href="createBlogPost.php"><h2 class="Clickable">Create Post</h2></a>';

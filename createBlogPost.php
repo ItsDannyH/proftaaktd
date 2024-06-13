@@ -32,6 +32,7 @@ createPost();
         <?php
         // Display navigation menu
         shownav();
+        userLoggedIn();
         ?>
     </nav>
 

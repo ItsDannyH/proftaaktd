@@ -18,8 +18,8 @@ register()
     <nav class="navbar">
         <?php
         shownav();
+        userLoggedIn();
         ?>
-        <a style="float:right" href="login1.php" class="loginbtn">Login</a>
     </nav>
 </header>
 

@@ -16,8 +16,8 @@ login();
     <nav class="navbar">
         <?php
         shownav();
+        userLoggedIn();
         ?>
-        <a style="float:right" href="login1.php" class="loginbtn">Login</a>
     </nav>
 </header>
 
@@ -29,7 +29,7 @@ login();
 
 <section class="team-section">
     <div class="team-title">
-        <h1 class="login">Our team naam</h1>
+        <h1 class="login">We are AH Inc.</h1>
     </div>
     <div class="team-cards">
         <div class="team-card">

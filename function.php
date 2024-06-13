@@ -1,23 +1,22 @@
 <?php
 session_start();
 
-// Function to establish database connection
-function db_connect()
-{
+// Function to establish a database connection
+function db_connect() {
+    // Database credentials
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "ProftaakTD";
+    $dbname = "proftaaktd"; // Replace with your database name
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
     // Check connection
-    if ($conn->connect_error) 
-    {
+    if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // Return the connection object
+
     return $conn;
 }
 
@@ -121,7 +120,6 @@ function login()
         {
             $_SESSION['loggedin'] = false;
         }
-        $_SESSION['loggedin'] = false;
     }
 }
 
@@ -176,6 +174,80 @@ function register()
             $error = "Username and password are required.";
         }
     }
+}
+
+// Function to get leaderboard data
+function getLeaderboard() {
+    // Connect to the database
+    $conn = db_connect();
+
+    // Check if connection is valid
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query to retrieve leaderboard data
+    $sql = "SELECT user.username, leaderboard.map, leaderboard.score, leaderboard.time_date FROM leaderboard INNER JOIN user ON leaderboard.klantid = user.klantid ORDER BY leaderboard.score DESC";
+
+    // Execute query
+    $result = $conn->query($sql);
+
+    // Check if query executed successfully
+    if ($result) {
+        $leaderboard = [];
+        // Fetch associative array of leaderboard data
+        while ($row = $result->fetch_assoc()) {
+            // Append each row to the leaderboard array
+            $leaderboard[] = $row;
+        }
+        // Close result set
+        $result->close();
+    } else {
+        echo "Error: " . $conn->error;
+        $leaderboard = []; // Initialize as an empty array if query failed
+    }
+
+    // Close connection
+    $conn->close();
+
+    return $leaderboard;
+}
+
+// Function to display leaderboard
+function showLeaderboard() {
+    // Get leaderboard data
+    $leaderboardItems = getLeaderboard();
+
+    // Check if there are any leaderboard items
+    if (empty($leaderboardItems)) {
+        echo "No records found.";
+        return;
+    }
+
+    // Output leaderboard as a table
+    echo "<table border='1'>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Map</th>
+                    <th>Score</th>
+                    <th>Time/Date</th>
+                </tr>
+            </thead>
+            <tbody>";
+
+    // Loop through leaderboard items and display them in table rows
+    foreach ($leaderboardItems as $item) {
+        echo "<tr>
+                <td>{$item['username']}</td>
+                <td>{$item['map']}</td>
+                <td>{$item['score']}</td>
+                <td>{$item['time_date']}</td>
+              </tr>";
+    }
+
+    echo "</tbody>
+        </table>";
 }
 
 function dd($var)
@@ -467,4 +539,14 @@ function addComment($blogId, $name, $comment) {
         return false; // Error adding comment
     }
 }
+
+function userLoggedIn(){
+    if($_SESSION['loggedin'] == true){
+        ?><a style="float:right" href="profile.php" class="loginbtn">Profile</a> <?php
+    }
+    else if ($_SESSION['loggedin'] == false){
+        ?><a style="float:right" href="login1.php" class="loginbtn">Login</a> <?php
+    }
+}
+
 ?>
