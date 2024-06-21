@@ -31,16 +31,6 @@ register()
 <div class="wrapper1">
     <div class="wrapper">
         <div class="form-box login">
-            <?php 
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                ?> 
-                <h2 class="loginh2">Hello user!<br> You are currently logged in. If you want to log out, click the button below.</h2>
-                <form action="login1.php" method="post">
-                    <button type="submit" class="submitbtn">Logout</button>
-                </form>
-                <?php
-            } else {
-                ?> 
                 <h2 class="loginh2">Login</h2>
                 <form action="login1.php" method="post">
                     <div class="input-box">
@@ -67,9 +57,6 @@ register()
                         <p>Don't have an account?<a class="register-link"> Register</a></p>
                     </div>
                 </form>
-                <?php
-            }
-            ?>
         </div>
         <div class="form-box register">
             <h2 class="loginh2">Registration</h2>

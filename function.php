@@ -90,8 +90,11 @@ function login()
             $password = $_POST['password'];
 
             // Prepare SQL statement to retrieve user information based on username and password
-            $sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
-            $result = $conn->query($sql);
+            $sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $username, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             // Check if a user with the provided username and password exists
             if ($result->num_rows == 1) 
@@ -100,6 +103,12 @@ function login()
                 $user = $result->fetch_assoc();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user'] = $user;
+
+                // Set admin session variable if user is admin
+                if ($user['admin'] == 1) {
+                    $_SESSION['admin'] = true;
+                }
+
                 // Redirect user to products page
                 header("Location:login1.php");
                 exit;
@@ -123,6 +132,7 @@ function login()
     }
 }
 
+
 function register() 
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -132,18 +142,18 @@ function register()
         {
             // Connect to the database
             $conn = db_connect();
-
+            
             // Prepare data for insertion
             $username = $_POST['usernameR'];
             $password = $_POST['passwordR']; // For simplicity, you can hash the password here before storing it
-
+            
             // Check if the username already exists
             $sql = "SELECT * FROM user WHERE username = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("s", $username);
             $stmt->execute();
             $result = $stmt->get_result();
-
+            
             if ($result->num_rows > 0) 
             {
                 // Username already exists, show error message
@@ -180,7 +190,7 @@ function register()
 function getLeaderboard() {
     // Connect to the database
     $conn = db_connect();
-
+    
     // Check if connection is valid
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -188,10 +198,10 @@ function getLeaderboard() {
 
     // Query to retrieve leaderboard data
     $sql = "SELECT user.username, leaderboard.map, leaderboard.score, leaderboard.time_date FROM leaderboard INNER JOIN user ON leaderboard.klantid = user.klantid ORDER BY leaderboard.score DESC";
-
+    
     // Execute query
     $result = $conn->query($sql);
-
+    
     // Check if query executed successfully
     if ($result) {
         $leaderboard = [];
@@ -206,10 +216,10 @@ function getLeaderboard() {
         echo "Error: " . $conn->error;
         $leaderboard = []; // Initialize as an empty array if query failed
     }
-
+    
     // Close connection
     $conn->close();
-
+    
     return $leaderboard;
 }
 
@@ -217,7 +227,7 @@ function getLeaderboard() {
 function showLeaderboard() {
     // Get leaderboard data
     $leaderboardItems = getLeaderboard();
-
+    
     // Check if there are any leaderboard items
     if (empty($leaderboardItems)) {
         echo "No records found.";
@@ -228,26 +238,26 @@ function showLeaderboard() {
     echo "<table border='1'>
             <thead>
                 <tr>
-                    <th>Username</th>
+                <th>Username</th>
                     <th>Map</th>
                     <th>Score</th>
                     <th>Time/Date</th>
-                </tr>
-            </thead>
-            <tbody>";
-
+                    </tr>
+                    </thead>
+                    <tbody>";
+                    
     // Loop through leaderboard items and display them in table rows
     foreach ($leaderboardItems as $item) {
         echo "<tr>
-                <td>{$item['username']}</td>
-                <td>{$item['map']}</td>
-                <td>{$item['score']}</td>
-                <td>{$item['time_date']}</td>
-              </tr>";
+        <td>{$item['username']}</td>
+        <td>{$item['map']}</td>
+        <td>{$item['score']}</td>
+        <td>{$item['time_date']}</td>
+        </tr>";
     }
-
+    
     echo "</tbody>
-        </table>";
+    </table>";
 }
 
 function dd($var)
@@ -286,7 +296,7 @@ function createPost()
         $date = $_POST['date'];
         $category = $_POST['category'];
         $content = $_POST['content'];
-
+        
         // Insert data into the blog table
         $conn = db_connect();
         $sql = "INSERT INTO blog (title, author, date, category, content) VALUES (?, ?, ?, ?, ?)";
@@ -296,7 +306,7 @@ function createPost()
         // Execute the statement
         if ($stmt->execute()) {
             // Insertion successful, redirect to a confirmation page or any other page
-            header("Location: blog.php");
+            header("Location: forum.php");
             exit;
         } else {
             // Insertion failed, handle the error (you can display an error message or log it)
@@ -320,17 +330,17 @@ function getBlogs($category = false)
 
     // Add ORDER BY clause to sort by date in descending order
     $sql .= " ORDER BY date DESC";
- 
+    
     // Execute the query
     $resourceB = $conn->query($sql) or die($conn->error);
- 
+    
     // Check if there are results
     if ($resourceB->num_rows > 0) {
         $blogs = $resourceB->fetch_all(MYSQLI_ASSOC);
     } else {
         $blogs = array(); // Initialize as an empty array if no results
     }
-
+    
     return $blogs;
 }
 
@@ -362,7 +372,7 @@ function getBlog($blogId) {
 function showBlogs()
 {
     $category = isset($_GET['category']) ? $_GET['category'] : false;
-
+    
     if($category)
     {
         // Get blogs of the selected $category only
@@ -373,34 +383,34 @@ function showBlogs()
         // Get all blogs if no $category is selected
         $blogItems = getBlogs();
     }
-
+    
     // Check if there are any blog items
     if (empty($blogItems)) 
     {
         echo "No blogss found.";
         return;
     }
-
+    
     // Loop through blog items and display them
     foreach ($blogItems as $bItem)
     {
         // Display blog details
     }
 
-
-// Loop through blog items and display them
-foreach ($blogItems as $bItem)
-{
-    if (isset($bItem['id'], $bItem['title'], $bItem['author'], $bItem['date'], $bItem['category'], $bItem['content'])) 
+    
+    // Loop through blog items and display them
+    foreach ($blogItems as $bItem)
     {
-        ?>
+        if (isset($bItem['id'], $bItem['title'], $bItem['author'], $bItem['date'], $bItem['category'], $bItem['content'])) 
+        {
+            ?>
         <div class="blog-item">
-                <h1 class="titleb"><?php echo $bItem['title']; ?></h1>
-                <p class="author"><?php echo $bItem['author']; ?></p>
+            <h1 class="titleb"><?php echo $bItem['title']; ?></h1>
+            <p class="author"><?php echo $bItem['author']; ?></p>
                 <p class="date"><?php echo $bItem['date']; ?></p>
                 <p class="categoryb"><?php echo $bItem['category']; ?></p>
                 <p class="content"><?php echo substr($bItem['content'], 0, 100) . '...'; ?></p>
-                <a class="Clickable" href="blog.php?id=<?php echo $bItem['id']; ?>">Read more</a>
+                <a class="Clickable" href="forum.php?id=<?php echo $bItem['id']; ?>">Read more</a>
         </div>
         <?php
     } 
@@ -419,7 +429,7 @@ function showBlogCategory()
         echo "No blog items found.";
         return;
     }
- 
+    
     // Loop through blog items and display them
     foreach ($$blogCategory as $bItem)
     {
@@ -444,7 +454,7 @@ function showBlog($blogId) {
     // Check if the blog post exists
     if ($blogPost) {
         ?>
-        <a href="blog.php" class="block Clickable">Go Back</a>
+        <a href="forum.php" class="block Clickable">Go Back</a>
         <div class="Content">
             <div class="blog-item">
                 <h1 class="titleb"><?php echo $blogPost['title']; ?></h1>
@@ -454,7 +464,7 @@ function showBlog($blogId) {
                 <p class="content"><?php echo $blogPost['content']; ?></p>
             </div>
         </div>
-  
+        
         <!-- Comment Section -->
         <div class="comment-section">
             <h2>Comments</h2>
@@ -478,7 +488,7 @@ function showBlog($blogId) {
                 {
                     echo "<p>No comments yet.</p>";
                 }
-            ?>
+                ?>
             <!-- Comment Form -->
             <div class="addcomment">
             <form action="addComment.php" method="post">
@@ -540,12 +550,88 @@ function addComment($blogId, $name, $comment) {
     }
 }
 
-function userLoggedIn(){
-    if($_SESSION['loggedin'] == true){
-        ?><a style="float:right" href="profile.php" class="loginbtn">Profile</a> <?php
+// Function to retrieve the logged-in user's information
+function getUserInfo($userId) {
+    $conn = db_connect();
+    
+    $sql = "SELECT * FROM user WHERE klantid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return false;
     }
-    else if ($_SESSION['loggedin'] == false){
+}
+
+// Function to retrieve the logged-in user's leaderboard results
+function getUserResults($userId) {
+    $conn = db_connect();
+    
+    $sql = "SELECT * FROM leaderboard WHERE klantid = ? ORDER BY time_date DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+    $results = [];
+    while ($row = $result->fetch_assoc()) {
+        $results[] = $row;
+    }
+    
+    return $results;
+}
+// Function to generate HTML for user results
+function displayUserResults($userId) {
+    $results = getUserResults($userId);
+    
+    if (empty($results)) {
+        echo "<tr><td colspan='3'>No results found.</td></tr>";
+        return;
+    }
+    
+    foreach ($results as $result) {
+        echo "<tr>
+        <td>{$result['map']}</td>
+        <td>{$result['score']}</td>
+        <td>{$result['time_date']}</td>
+        </tr>";
+    }
+}
+
+function fetchUserInfoAdmin()
+{
+    
+    // Fetch all users
+    $conn = db_connect();
+    $sql_users = "SELECT * FROM user";
+    $result_users = $conn->query($sql_users);
+    
+    // Fetch all comments
+    $sql_comments = "SELECT * FROM comments"; // Assuming you have a comments table
+    $result_comments = $conn->query($sql_comments);
+    
+}
+
+function userLoggedIn() {
+    if ($_SESSION['loggedin'] == true) {
+        ?><a style="float:right" href="profile.php" class="loginbtn">Profile</a> <?php
+        if (isAdmin()) {
+            ?><a style="float:right" href="control.php" class="loginbtn">Admin</a> <?php
+        }
+    } else {
         ?><a style="float:right" href="login1.php" class="loginbtn">Login</a> <?php
+    }
+}
+
+function isAdmin() {
+    if (isset($_SESSION['user']['admin']) && $_SESSION['user']['admin'] == 1) {
+        return true;
+    } else {
+        return false;
     }
 }
 
