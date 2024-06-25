@@ -6,7 +6,7 @@ include "function.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn More - Tower Defense Game</title>
+    <title>Tower Defense Game - Learn More</title>
     <link rel="stylesheet" href="style/home.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
@@ -47,8 +47,8 @@ include "function.php";
         <h2>Media</h2>
         <p>Check out some screenshots and videos from the game to get a glimpse of the action!</p>
         <div class="media-gallery">
-            <img src="images/screenshot1.jpg" alt="Screenshot 1">
-            <img src="images/screenshot2.jpg" alt="Screenshot 2">
+            <img src="images/screenshot1.jpg" alt="Screenshot of the game showing a battle scene">
+            <img src="images/screenshot2.jpg" alt="Screenshot of the game showing tower defenses">
             <video controls>
                 <source src="videos/gameplay.mp4" type="video/mp4">
                 Your browser does not support the video tag.

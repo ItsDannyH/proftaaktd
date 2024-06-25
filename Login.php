@@ -1,15 +1,14 @@
 <?php 
 include "function.php";
 login();
-register()
+register();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gameworld</title>
-    <!-- <link rel="stylesheet" href="style/style.css"> -->
+    <title>Tower Defense Game - Login</title>
     <link rel="stylesheet" href="style/login.css">
 </head>
 <body>
@@ -31,48 +30,48 @@ register()
 <div class="wrapper1">
     <div class="wrapper">
         <div class="form-box login">
-                <h2 class="loginh2">Login</h2>
-                <form action="login1.php" method="post">
-                    <div class="input-box">
-                        <span class="icon">
-                            <ion-icon name="mail"></ion-icon>
-                        </span>
-                        <input type="text" name="username" required>
-                        <label class="llabel">Username</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon">
-                            <ion-icon name="lock-closed"></ion-icon>
-                        </span>
-                        <input type="password" name="password" required>
-                        <label class="llabel">Password</label>
-                    </div>
-                    <div class="remember-forgot">
-                        <label class="llabel"><input type="checkbox" name="remember">
-                        Remember me</label>
-                        <a href="#" class="aa">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="submitbtn">Login</button>
-                    <div class="login-register">
-                        <p>Don't have an account?<a class="register-link"> Register</a></p>
-                    </div>
-                </form>
-        </div>
-        <div class="form-box register">
-            <h2 class="loginh2">Registration</h2>
-            <form action="login1.php" method="post">
+            <h2 class="loginh2">Login</h2>
+            <form action="Login.php" method="post">
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input id="usernameR" name="usernameR" type="user"required>
+                    <input type="text" name="username" required>
                     <label class="llabel">Username</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input id="passwordR" name="passwordR" type="password"required>
+                    <input type="password" name="password" required>
+                    <label class="llabel">Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label class="llabel"><input type="checkbox" name="remember">
+                    Remember me</label>
+                    <a href="#" class="aa">Forgot Password?</a>
+                </div>
+                <button type="submit" class="submitbtn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a class="register-link"> Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2 class="loginh2">Registration</h2>
+            <form action="Login.php" method="post">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail"></ion-icon>
+                    </span>
+                    <input id="usernameR" name="usernameR" type="user" required>
+                    <label class="llabel">Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="lock-closed"></ion-icon>
+                    </span>
+                    <input id="passwordR" name="passwordR" type="password" required>
                     <label class="llabel">Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -81,7 +80,7 @@ register()
                 </div>
                 <button type="submit" class="submitbtn">Register</button>
                 <div class="login-register">
-                    <p>Already have a account?<a href="#" class="login-link"> Login</a></p>
+                    <p>Already have an account?<a href="#" class="login-link"> Login</a></p>
                 </div>
             </form>
         </div>

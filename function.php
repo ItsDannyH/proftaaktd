@@ -21,8 +21,7 @@ function db_connect() {
 }
 
 // Function to retrieve navigation items from the database
-function getNavigation()
-{
+function getNavigation() {
     // connect to DB
     $conn = db_connect();
  
@@ -33,12 +32,9 @@ function getNavigation()
     $resource = $conn->query($sql) or die($conn->error);
  
     // Check if there are results
-    if ($resource->num_rows > 0) 
-    {
+    if ($resource->num_rows > 0) {
         $navigation = $resource->fetch_all(MYSQLI_ASSOC);
-    } 
-    else 
-    {
+    } else {
         $navigation = array(); // Initialize as an empty array if no results
     }
  
@@ -46,42 +42,33 @@ function getNavigation()
 }
 
 // Function to display navigation items
-function shownav()
-{
+function shownav() {
     // Get navigation items
     $navigationItems = getNavigation();
 
     // Check if there are any navigation items
-    if (empty($navigationItems)) 
-    {
+    if (empty($navigationItems)) {
         echo "No navigation items found.";
         return;
     }
 
     // Loop through navigation items and display them
-    foreach ($navigationItems as $item)
-    {
+    foreach ($navigationItems as $item) {
         // Check if the keys "nav" and "label" exist in the current item
-        if (isset($item['nav']) && isset($item['label'])) 
-        {
-            ?>
+        if (isset($item['nav']) && isset($item['label'])) {
+?>
             <a href="<?php echo $item['nav']; ?>"><?php echo $item['label']; ?></a>
-            <?php
-        } 
-        else 
-        {
+<?php
+        } else {
             echo "Missing 'nav' or 'label' key for a navigation item.";
         }
     }
 }
 
-function login()
-{
-    if ($_SERVER["REQUEST_METHOD"] == "POST") 
-    {
+function login() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if username and password are set and not empty
-        if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])) 
-        {
+        if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])) {
             // Connect to the database
             $conn = db_connect();
 
@@ -97,8 +84,7 @@ function login()
             $result = $stmt->get_result();
 
             // Check if a user with the provided username and password exists
-            if ($result->num_rows == 1) 
-            {
+            if ($result->num_rows == 1) {
                 // Authentication successful, set session variables
                 $user = $result->fetch_assoc();
                 $_SESSION['loggedin'] = true;
@@ -110,36 +96,28 @@ function login()
                 }
 
                 // Redirect user to products page
-                header("Location:login1.php");
+                header("Location:Login.php");
                 exit;
-            } 
-            else 
-            {
+            } else {
                 // Authentication failed, show error message
                 $error = "Invalid username or password.";
             }
-        } 
-        else 
-        {
+        } else {
             // If username or password is empty, show error message
             $error = "Username and password are required.";
         }
 
-        if ($_SESSION['loggedin'] = true && $_POST == 'logout')
-        {
+        if ($_SESSION['loggedin'] = true && $_POST == 'logout') {
             $_SESSION['loggedin'] = false;
         }
     }
 }
 
 
-function register() 
-{
-    if ($_SERVER["REQUEST_METHOD"] == "POST") 
-    {
+function register() {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if username and password are set and not empty
-        if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && !empty($_POST['usernameR']) && !empty($_POST['passwordR'])) 
-        {
+        if (isset($_POST['usernameR']) && isset($_POST['passwordR']) && !empty($_POST['usernameR']) && !empty($_POST['passwordR'])) {
             // Connect to the database
             $conn = db_connect();
             
@@ -154,32 +132,24 @@ function register()
             $stmt->execute();
             $result = $stmt->get_result();
             
-            if ($result->num_rows > 0) 
-            {
+            if ($result->num_rows > 0) {
                 // Username already exists, show error message
                 $error = "Username already exists.";
-            } 
-            else 
-            {
+            } else {
                 // Insert new user into the database
                 $sql = "INSERT INTO user (username, password) VALUES (?, ?)";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("ss", $username, $password); // For security, you should hash the password here
-                if ($stmt->execute()) 
-                {
+                if ($stmt->execute()) {
                     // Registration successful, redirect to login page
-                    header("Location:login1.php");
+                    header("Location:Login.php");
                     exit;
-                } 
-                else 
-                {
+                } else {
                     // Error inserting user, show error message
                     $error = "Error registering user.";
                 }
             }
-        } 
-        else 
-        {
+        } else {
             // If username or password is empty, show error message
             $error = "Username and password are required.";
         }
@@ -238,57 +208,49 @@ function showLeaderboard() {
     echo "<table border='1'>
             <thead>
                 <tr>
-                <th>Username</th>
+                    <th>Username</th>
                     <th>Map</th>
                     <th>Score</th>
                     <th>Time/Date</th>
-                    </tr>
-                    </thead>
-                    <tbody>";
+                </tr>
+            </thead>
+            <tbody>";
                     
     // Loop through leaderboard items and display them in table rows
     foreach ($leaderboardItems as $item) {
         echo "<tr>
-        <td>{$item['username']}</td>
-        <td>{$item['map']}</td>
-        <td>{$item['score']}</td>
-        <td>{$item['time_date']}</td>
-        </tr>";
+                <td>{$item['username']}</td>
+                <td>{$item['map']}</td>
+                <td>{$item['score']}</td>
+                <td>{$item['time_date']}</td>
+              </tr>";
     }
     
     echo "</tbody>
     </table>";
 }
 
-function dd($var)
-{
+function dd($var) {
     echo "<pre>";
     var_dump($var);
     echo "</pre>";
 }
 
-
-function reload($address = false)
-{
-    if($address != false)
-    {
+function reload($address = false) {
+    if($address != false) {
         header("location:" . $address);
-    } 
-    else
-    {
+    } else {
         header("location:cart.php");
     }
 }
 
-function init()
-{
-    if(!isset($_SESSION['shopping-cart']))
-    {
+function init() {
+    if(!isset($_SESSION['shopping-cart'])) {
         $_SESSION['shopping-cart'] = [];
     }
 }
-function createPost()
-{
+
+function createPost() {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get form data
         $title = $_POST['title'];
@@ -623,7 +585,7 @@ function userLoggedIn() {
             ?><a style="float:right" href="control.php" class="loginbtn">Admin</a> <?php
         }
     } else {
-        ?><a style="float:right" href="login1.php" class="loginbtn">Login</a> <?php
+        ?><a style="float:right" href="Login.php" class="loginbtn">Login</a> <?php
     }
 }
 

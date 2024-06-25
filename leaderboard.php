@@ -2,8 +2,8 @@
 // Include necessary functions
 include("function.php");
 
-// Connect to the database
-db_connect();
+// Establish database connection (assuming db_connect() returns the connection)
+$conn = db_connect();
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ db_connect();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameWorld - Leaderboard</title>
+    <title>Tower Defense Game - Leaderboard</title>
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
@@ -21,12 +21,13 @@ db_connect();
             <?php 
             // Display navigation menu
             shownav(); 
+            // Check if user is logged in and display appropriate content
             userLoggedIn();
             ?>
-            
         </nav>
     </header>
 
+    <!-- Video Background -->
     <video autoplay muted loop class="video-background">
         <source src="back\mylivewallpapers-com-Black-Hole-FHD.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -48,15 +49,15 @@ db_connect();
             $leaderboard = getLeaderboard();
 
             // Output leaderboard data
-            if ($leaderboard) {
+            if (!empty($leaderboard)) {
                 $rank = 1;
                 foreach ($leaderboard as $row) {
                     echo "<tr>";
                     echo "<td>" . $rank++ . "</td>";
-                    echo "<td>" . $row['username'] . "</td>";
-                    echo "<td>" . $row['map'] . "</td>";
-                    echo "<td>" . $row['score'] . "</td>";
-                    echo "<td>" . $row['time_date'] . "</td>";
+                    echo "<td>" . htmlspecialchars($row['username']) . "</td>"; // htmlspecialchars to prevent XSS
+                    echo "<td>" . htmlspecialchars($row['map']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['score']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['time_date']) . "</td>";
                     echo "</tr>";
                 }
             } else {
@@ -68,10 +69,8 @@ db_connect();
 
     <!-- Footer Section -->
     <footer>
-        <!-- Button to scroll to the top of the page -->
-        <!-- <button onclick="topFunction()" id="myBtn" class="Top" title="Go to top">^</button> -->
-        <!-- Include JavaScript file -->
-        <script src="js/main.js"></script>
+        <!-- Include JavaScript file if necessary -->
+        <!-- <script src="js/main.js"></script> -->
     </footer>
 </body>
 </html>

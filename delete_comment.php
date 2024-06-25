@@ -23,8 +23,14 @@ $username = "root";
 $password = "";
 $dbname = "proftaaktd"; // Replace with your database name
 
- // Create connection
- $conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // Prepare SQL query
 $query = "DELETE FROM comments WHERE id = ?";
 $stmt = $conn->prepare($query);
@@ -38,10 +44,15 @@ if (!$stmt) {
 $stmt->bind_param("i", $commentId);
 
 if ($stmt->execute()) {
+    // Redirect to control page after successful deletion
     header("Location: control.php");
     exit();
 } else {
     echo "Error executing SQL query: " . $stmt->error;
     exit();
 }
+
+// Close statement and connection
+$stmt->close();
+$conn->close();
 ?>

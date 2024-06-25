@@ -1,12 +1,16 @@
+/* Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* General styling */
 html
 {
-  background-color: #ffffff;
-  background-image: url(../img/Ontwerp_ProfTake.png);
-  background-size: cover;
-  height: 100%;
-  width: 100%;
+    background-color: #ffffff;
+    background-image: url(../img/Ontwerp_ProfTake.png);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 }
+
 body
 {
     font-family: Arial, Helvetica, sans-serif;
@@ -16,12 +20,14 @@ body
     width: 100%;
     margin: auto;
 }
+
 button
 {
-  background-color: #008cff;
-  border: none;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
+    background-color: #008cff;
+    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
 }
+
 h1
 {
     margin: auto;
@@ -37,43 +43,47 @@ nav a
     text-decoration: none;
 }
 
- nav 
- {
+nav
+{
     overflow: hidden;
     background-color: #008cff;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-  }
-  #game-container
-  {
+}
+
+/* Game-related containers */
+#game-container
+{
     display: flex;
-    justify-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     width: 90%;
     margin: auto;
     margin-top: 8vw;
     border-radius: 8px;
-  }
-  #games-container
-  {
+}
+
+#games-container
+{
     display: flex;
-    justify-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     width: 90%;
     margin: 5% auto;
-  }
-    img
-  {
+}
+
+img
+{
     display: inline-block;
     width: 130px;
     height: 180px;
     margin-top: 1vw;
-  }
+}
 
-    .game-item 
-  {
+.game-item
+{
     width: 12vw;
     height: 20vw;
     background-color: #F6E58E;
@@ -81,50 +91,50 @@ nav a
     text-align: center;
     margin: 1vw;
     border-radius: 8px;
-  }
+}
 
+/* Content and Blog styling */
 .Content
 {
-  height: auto;
-  width: 100%;
-  margin: auto;
-  margin-top: 4vw;
-  text-align: center; 
-  border-radius: 8px;
+    height: auto;
+    width: 100%;
+    margin: auto;
+    margin-top: 4vw;
+    text-align: center; 
+    border-radius: 8px;
 }
 
 .Content a
 {
-  color: #008cff;
+    color: #008cff;
 }
 
 .content
 {
-  margin-bottom: 2vw;
+    margin-bottom: 2vw;
 }
-
-
 
 .BlogContent
 {
-  align-self: center;
-  width: 60%;
-  margin: auto;
-  margin-top: 3vw;
-}
-.BlogContentCreate
-{
-  margin: auto;
-  margin-top: 4vw;
-  background-color: #bcbcbc;
-  text-align: center;
-  width: fit-content;
-  border-radius: 8px;
-  padding: 2vw;
+    align-self: center;
+    width: 60%;
+    margin: auto;
+    margin-top: 3vw;
 }
 
-  .blog-item 
-  { 
+.BlogContentCreate
+{
+    margin: auto;
+    margin-top: 4vw;
+    background-color: #bcbcbc;
+    text-align: center;
+    width: fit-content;
+    border-radius: 8px;
+    padding: 2vw;
+}
+
+.blog-item
+{
     width: 100%;
     height: fit-content;
     background-color: #bcbcbc;
@@ -133,10 +143,10 @@ nav a
     margin-bottom: 2vw;
     padding: 2vw;
     border-radius: 8px;
-  }
+}
 
-  .comment-section
-  {
+.comment-section
+{
     width: fit-content;
     height: fit-content;
     background-color: #bcbcbc;
@@ -147,10 +157,10 @@ nav a
     margin-bottom: 2vw;
     padding: 2vw;
     border-radius: 8px;
-  }
+}
 
-  .comment
-  {
+.comment
+{
     width: auto;
     height: fit-content;
     background-color: #008cff;
@@ -161,18 +171,18 @@ nav a
     margin-bottom: 2vw;
     padding: 2vw;
     border-radius: 8px;
-  }
+}
 
-  .addcomment
-  {
+.addcomment
+{
     margin: auto;
     background-color: #008cff;
     padding: 1vw;
     border-radius: 8px;
-  }
+}
 
-    .banner
-  {
+.banner
+{
     margin: auto;
     margin-top: 4vw;
     padding: 2vw;
@@ -180,53 +190,56 @@ nav a
     background-color: #dfdfdf;
     text-align: center;
     border-radius: 8px;
-  }
+}
 
-    .banner h1
-  {
+.banner h1
+{
     font-size: 45px;
-  }
+}
 
-    .banner p
-  {
+.banner p
+{
     font-size: 35px;
-  }
+}
 
-    a
-  {
+/* General links and buttons */
+a
+{
     text-decoration: none;
     color: black;
-  }
+}
 
-    .main
-  {
+.main
+{
     height: 100%;
     width: 100%;
     margin: auto;
-  }
-  .category
-  {
+}
+
+.category
+{
     position: absolute;
     top: 7%;
-    margin-left:1vw;
+    margin-left: 1vw;
     background-color: #008cff;
     padding: 0.5%;
     border-radius: 6px;
     border: none;
-  }
+}
 
-  article
-  {
+article
+{
     width: 95%;
     margin: auto;
     background-color: #dfdfdf;
     padding: 0.5%;
     border-radius: 6px;
     border: none;
-  }
+}
 
-    .Top
-  {
+/* Other specific styles */
+.Top
+{
     position: fixed;
     top: 85%;
     left: 95%;
@@ -237,66 +250,71 @@ nav a
     font-size: 42px;
     width: 4vw;
     height: 4vw;
-  }
-    .Top:hover 
-  {
-    cursor: pointer;
-  }
+}
 
-    .description_item
-  {
+.Top:hover
+{
+    cursor: pointer;
+}
+
+.description_item
+{
     float: right;
     width: 70%;
-  }
-    input
-  {
+}
+
+input
+{
     border: none;
     border-radius: 6px;
     padding: 6px;
-  }
+}
 
-  
-  .product
-  {
+/* Specific to product and checkout sections */
+.product
+{
     width: 70%;
     background-color: #F6E58E;
     padding: 2vw;
     border-radius: 8px;
-  }
-  .checkout
-  {
+}
+
+.checkout
+{
     margin-left: 2vw;
     background-color: #F6E58E;
     padding: 2%;
     width: 250;
     height: 400px;
     border-radius: 8px;
-  }
-  .container
-    {
-      height: fit-content;
-      width: fit-content;
-      margin: auto;
-      padding: 2vw;
-      border-radius: 8px;
-      background-color: #bcbcbc;
-    }
-    
-    .container a :hover
-    {
-      color: #008cff;
-    }
-    .Clickable
-    {
-      background-color: #008cff;
-      margin-top: 1vw;
-      width: fit-content;
-      height: fit-content;
-      padding: 1vw;
-      border-radius: 8px;
-    }
+}
 
-    .block
-    {
-      display: block;
-    }
+.container
+{
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    padding: 2vw;
+    border-radius: 8px;
+    background-color: #bcbcbc;
+}
+
+.container a:hover
+{
+    color: #008cff;
+}
+
+.Clickable
+{
+    background-color: #008cff;
+    margin-top: 1vw;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vw;
+    border-radius: 8px;
+}
+
+.block
+{
+    display: block;
+}

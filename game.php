@@ -6,7 +6,7 @@ include "function.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download - Tower Defense Game</title>
+    <title>Tower Defense Game - Download</title>
     <link rel="stylesheet" href="style/home.css">
     <link rel="stylesheet" href="style/style.css">
 </head>
@@ -30,20 +30,13 @@ include "function.php";
     <h1>Download Tower Defense Game</h1>
     <p>Experience the ultimate tower defense game now! Download for your preferred platform and start defending your towers.</p>
     <div class="download-buttons">
-        <?php 
-        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
-        { ?>
-        <a href="path/to/windows-version.exe" class="download-button windows">Download for Windows</a>
-        <a href="path/to/linux-version.tar.gz" class="download-button linux">Download for Linux</a>
-      <?php  
-      }
-    else
-    { ?>
-        <a href="login1.php" class="download-button windows">Login Here To Download</a>
-        <a href="login1.php" class="download-button linux">Login Here To Download</a>
-        <?php
-    }
-        ?>
+        <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
+            <a href="path/to/windows-version.exe" class="download-button windows">Download for Windows</a>
+            <a href="path/to/linux-version.tar.gz" class="download-button linux">Download for Linux</a>
+        <?php else: ?>
+            <a href="Login.php" class="download-button windows">Login Here To Download</a>
+            <a href="Login.php" class="download-button linux">Login Here To Download</a>
+        <?php endif; ?>
     </div>
 
     <section class="system-requirements">
